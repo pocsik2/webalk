@@ -22,7 +22,7 @@ public class SetGame extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    //asd
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
