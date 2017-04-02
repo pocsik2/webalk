@@ -2,6 +2,6 @@ package test;
 
 public class HelloWorldApp {
 	 public static void main(String[] args) {
-	 System.out.println("Hello World! asd");
+	 System.out.println("Hello World! a");
 	 }
 	}
