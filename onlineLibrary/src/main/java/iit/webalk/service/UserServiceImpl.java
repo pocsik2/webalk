@@ -4,41 +4,41 @@ import java.util.*;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import iit.webalk.modell.User;
+import iit.webalk.repository.UserRepository;
+import iit.webalk.entity.UserEntity;
 import iit.webalk.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService{
 	
-	private List<User> users = new ArrayList<>();
+	iit.webalk.repository.UserRepository userRepository;
 	
-	@PostConstruct
-	void initUserList() {
-		users.add(new User("Bela", 0));
-		users.add(new User("Yuli", 1));
-		users.add(new User("Marci", 2));
+	@Autowired
+	public UserServiceImpl(UserRepository userRepository){
+		super();
+		this.userRepository = userRepository;
 	}
 
-	@Override
-	public List<User> listAllUser() {
-		return users;
+	public Iterable<UserEntity> listAllUser() {
+		return userRepository.findAll();
 	}
 
-	@Override
-	public void newUser(User newUser) {
-		users.add(newUser);
+	public void newUser(UserEntity newUser) {
+		userRepository.save(newUser);
 	}
 
 	@Override
 	public void deleteUser(long id) {
-		for (User user: users) {
-			if(user.getId() == id) {
-				users.remove(user);
-				break;
-			}
-		}
+		userRepository.delete(id);
+	}
+	public void updateUser(long id, UserEntity newUser){
+		UserEntity entity = userRepository.findOne(id);
+		entity.setFirstname(newUser.getFirstname());
+		entity.setLastname(newUser.getLastname());
+		userRepository.save(entity);
 	}
 
 }

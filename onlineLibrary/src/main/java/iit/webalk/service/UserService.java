@@ -1,13 +1,12 @@
 package iit.webalk.service;
 
-import java.util.*;
-
-import iit.webalk.modell.User;
+import iit.webalk.entity.UserEntity;
 
 public interface UserService {
-	List<User> listAllUser();
-	void newUser(User newUser);
+	Iterable<UserEntity> listAllUser();
+	void newUser(UserEntity newUser);
 	void deleteUser(long id);
+	void updateUser(long id, UserEntity newUser);
 //	User loadUserById(Long userId);
 
 }
