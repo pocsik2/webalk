@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hu.me.entity.UserEntity;
 import hu.me.exception.AdminUserNotAllowed;
-import hu.me.model.User;
 import hu.me.service.UserService;
 
 @RestController
@@ -46,15 +45,13 @@ public class UserController {
 	}
 	
 	@PutMapping(path="/{id}", consumes=MediaType.APPLICATION_JSON_VALUE)
-	void updateExisting(@PathVariable("id") long id, @RequestBody User newUser){
-		//userService.updateUser(id);
+	void updateExisting(@PathVariable("id") long id, @RequestBody UserEntity newUser){
+		userService.updateUser(id, newUser);
 	}
 	
-	//modifyUser();
-//	@GetMapping(path="/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
-//	public UserEntity showOne(int id){
-//	Iterable<UserEntity> list();
-//		
-//	}
+	@GetMapping(path="/{id}")
+	UserEntity one(@PathVariable("id") long id, @RequestBody UserEntity newUser){
+		return userService.getOne(id);
+	}
 	
 }

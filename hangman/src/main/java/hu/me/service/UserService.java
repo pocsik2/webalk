@@ -6,6 +6,6 @@ public interface UserService {
 	Iterable<UserEntity> listAllUser();
 	void newUser(UserEntity newUser);
 	void deleteUser(long id);
-//	void updateUser(long id);
-	
+	void updateUser(long id, UserEntity newUser);
+	UserEntity getOne(long id);
 }
