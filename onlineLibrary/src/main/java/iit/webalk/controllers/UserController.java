@@ -51,6 +51,9 @@ public class UserController {
 	void updateExisting(@PathVariable("id")long id, @RequestBody UserEntity newUser) {
 		userService.updateUser(id, newUser);
 	}
-	
+	@GetMapping(path="/{id}")
+	UserEntity one(@PathVariable("id") long id, @RequestBody UserEntity newUser){
+		return userService.getOne(id);
+	}
 	
 }

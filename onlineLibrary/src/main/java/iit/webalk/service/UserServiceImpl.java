@@ -40,5 +40,9 @@ public class UserServiceImpl implements UserService{
 		entity.setLastname(newUser.getLastname());
 		userRepository.save(entity);
 	}
+	@Override
+	public UserEntity getOne(long id){
+		return userRepository.findOne(id);
+	}
 
 }

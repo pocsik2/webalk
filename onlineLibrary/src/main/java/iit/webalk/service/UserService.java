@@ -7,6 +7,7 @@ public interface UserService {
 	void newUser(UserEntity newUser);
 	void deleteUser(long id);
 	void updateUser(long id, UserEntity newUser);
+	UserEntity getOne(long id);
 //	User loadUserById(Long userId);
 
 }
