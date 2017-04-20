@@ -1,17 +1,22 @@
 package iit.webalk.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class LibrarianEntity {
 	
-	private long libId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long libId;
 	private String name;
 	
-	public long getLibId() {
+	public Long getLibId() {
 		return libId;
 	}
-	public void setLibId(long libId) {
+	public void setLibId(Long libId) {
 		this.libId = libId;
 	}
 	public String getName() {

@@ -1,7 +1,8 @@
 package iit.webalk.controllers;
 
 import org.springframework.http.MediaType;
-import java.util.*;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import iit.webalk.entity.UserEntity;
 import iit.webalk.exception.AdminUserNotAllowed;
-import iit.webalk.modell.User;
 import iit.webalk.service.UserService;
 
 @RestController
@@ -36,7 +36,7 @@ public class UserController {
 	
 	@PostMapping(path = "", consumes=MediaType.APPLICATION_JSON_VALUE)
 	void createNew(@RequestBody UserEntity newUser) {
-		if (newUser.getFirstname().toUpperCase().equals("ADMIN")){
+		if (newUser.getFirstName().toUpperCase().equals("ADMIN")){
 			throw new AdminUserNotAllowed();
 		}
 		userService.newUser(newUser);
@@ -54,6 +54,21 @@ public class UserController {
 	@GetMapping(path="/{id}")
 	UserEntity one(@PathVariable("id") long id, @RequestBody UserEntity newUser){
 		return userService.getOne(id);
+	}
+	
+	@GetMapping(path = "byLastName/{lastName}")
+	List<UserEntity> findByLastName(@PathVariable("lastName") String lastName) {
+		return userService.findByLastName(lastName);
+	}
+	
+	@GetMapping(path = "/orderByFirstName", produces=MediaType.APPLICATION_JSON_VALUE)
+	List<UserEntity> getUserOrderByFirstNameDesc(){
+		return userService.getUserOrderByFirstNameDesc();
+	}
+	
+	@GetMapping(path = "/getuserfirstnamelikenem", produces=MediaType.APPLICATION_JSON_VALUE)
+	List<UserEntity> getUseFirstNameLikeNem(){
+		return userService.getUserFirstNameLikeNem();
 	}
 	
 }
