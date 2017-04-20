@@ -11,8 +11,8 @@ public class UserEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String firstname;
-	private String lastname;
+	private String firstName;
+	private String lastName;
 	
 	public long getId() {
 		return id;
@@ -22,16 +22,16 @@ public class UserEntity {
 		//nem használjuk mert generálva lesz
 	}
 	public String getFirstname() {
-		return firstname;
+		return firstName;
 	}
 	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+		this.firstName = firstName;
 	}
 	public String getLastname() {
-		return lastname;
+		return lastName;
 	}
 	public void setLastname(String lastname) {
-		this.lastname = lastname;
+		this.lastName = lastName;
 	}
 	
 	

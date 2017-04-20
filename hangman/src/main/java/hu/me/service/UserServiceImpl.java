@@ -1,8 +1,11 @@
 package hu.me.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import hu.me.dao.UserDao;
 import hu.me.entity.UserEntity;
 import hu.me.repository.UserRepository;
 
@@ -10,6 +13,7 @@ import hu.me.repository.UserRepository;
 public class UserServiceImpl implements UserService{
 	
 	UserRepository userRepository;
+	UserDao userDao;
 	
 	@Autowired
 	public UserServiceImpl(UserRepository userRepository) {
@@ -38,6 +42,21 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserEntity getOne(long id){
 		return userRepository.findOne(id);
+	}
+	
+	@Override
+	public List<UserEntity> findByLastName(String lastName){
+		return userRepository.findByLastName(lastName);
+	}
+	
+	@Override
+	public List<UserEntity> getUserOrderByFirstName(){
+		return userDao.getUserOrderByFirstNameDesc();
+	}
+	
+	@Override
+	public List<UserEntity> getUserFirstNameLikeYou() {
+		return userDao.getUserFirstNameLikeYou();
 	}
 	
 }
