@@ -12,6 +12,5 @@ public interface UserService {
 	UserEntity getOne(long id);
 	List<UserEntity>findByLastName(String lastName);
 	List<UserEntity>getUserOrderByFirstName();
-//	List<UserEntity>getUserOrderByLastName();
 	List<UserEntity>getUserFirstNameLikeYou();
 }

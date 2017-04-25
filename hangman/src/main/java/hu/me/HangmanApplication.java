@@ -2,6 +2,7 @@ package hu.me;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -13,6 +14,7 @@ public class HangmanApplication {
 		SpringApplication.run(HangmanApplication.class, args);
 	}
 	
+	@Bean
 	public HibernateJpaSessionFactoryBean sessionFactory(){
 		return new HibernateJpaSessionFactoryBean();
 	}

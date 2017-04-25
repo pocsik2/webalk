@@ -16,9 +16,10 @@ public class UserServiceImpl implements UserService{
 	UserDao userDao;
 	
 	@Autowired
-	public UserServiceImpl(UserRepository userRepository) {
+	public UserServiceImpl(UserRepository userRepository, UserDao userDao) {
 		super();
 		this.userRepository = userRepository;
+		this.userDao = userDao;
 	}
 	public Iterable<UserEntity> listAllUser() {
 		return userRepository.findAll();
