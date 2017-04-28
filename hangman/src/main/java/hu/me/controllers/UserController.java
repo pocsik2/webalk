@@ -27,7 +27,7 @@ public class UserController {
 	private UserDao userDao;
 	
 	@Autowired
-	public UserController(UserService userService){
+	public UserController(UserService userService, UserDao userDao){
 		super();
 		this.userService = userService;
 		this.userDao = userDao;
