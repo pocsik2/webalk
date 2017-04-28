@@ -52,13 +52,13 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<UserEntity> getUserOrderByFirstNameDesc() {
+	public List<UserEntity> getUserOrderByFirstName() {
 		return userDao.getUserOrderByFirstNameDesc();
 	}
 
 	@Override
-	public List<UserEntity> getUserFirstNameLikeNem() {
-		return userDao.getUserFirstNameLikeNem();
+	public List<UserEntity> getUserFirstNameLikeYou() {
+		return userDao.getUserFirstNameLikeYou();
 	}
 
 }

@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import iit.webalk.dao.UserDao;
 import iit.webalk.entity.UserEntity;
 import iit.webalk.exception.AdminUserNotAllowed;
 import iit.webalk.service.UserService;
@@ -22,11 +24,17 @@ import iit.webalk.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 	
+	@Value("restricted_username")
+	private String restrictidusername;
 	private UserService userService;
+	private UserDao userDao;
 	
 	@Autowired
-	public UserController(UserService userService){
+	public UserController(UserService userService, UserDao userDao){
+		super();
 		this.userService = userService;
+		this.userDao = userDao;
+		
 	}
 	
 	@GetMapping(path = "", produces=MediaType.APPLICATION_JSON_VALUE)
@@ -62,13 +70,13 @@ public class UserController {
 	}
 	
 	@GetMapping(path = "/orderByFirstName", produces=MediaType.APPLICATION_JSON_VALUE)
-	List<UserEntity> getUserOrderByFirstNameDesc(){
-		return userService.getUserOrderByFirstNameDesc();
+	Iterable<UserEntity> getUserOrderByFirstName(){
+		return userService.getUserOrderByFirstName();
 	}
 	
-	@GetMapping(path = "/getuserfirstnamelikenem", produces=MediaType.APPLICATION_JSON_VALUE)
-	List<UserEntity> getUseFirstNameLikeNem(){
-		return userService.getUserFirstNameLikeNem();
+	@GetMapping(path = "/firstNameLikeYou")
+	Iterable<UserEntity> getUserFirstNameLikeYou(){
+		return userService.getUserFirstNameLikeYou();
 	}
 	
 }

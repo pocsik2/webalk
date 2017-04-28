@@ -32,7 +32,7 @@ public class UserDao {
 	}
 	
 	@Transactional
-	public List<UserEntity> getUserFirstNameLikeNem(){		
+	public List<UserEntity> getUserFirstNameLikeYou(){		
 		Criteria cr = sessionFactory.getCurrentSession().createCriteria(UserEntity.class);
 		cr.add(Restrictions.like("firstName","Nem%"));
 		return cr.list();

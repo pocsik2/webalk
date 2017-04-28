@@ -11,8 +11,8 @@ public interface UserService {
 	void updateUser(long id, UserEntity newUser);
 	UserEntity getOne(long id);
 	List<UserEntity>findByLastName(String lastName);
-	List<UserEntity>getUserOrderByFirstNameDesc();
-	List<UserEntity>getUserFirstNameLikeNem();
+	List<UserEntity>getUserOrderByFirstName();
+	List<UserEntity>getUserFirstNameLikeYou();
 	
 
 }

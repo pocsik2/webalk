@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import iit.webalk.entity.LibrarianEntity;
-import iit.webalk.entity.UserEntity;
 import iit.webalk.exception.AdminUserNotAllowed;
 import iit.webalk.service.LibrarianService;
 
