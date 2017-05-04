@@ -12,6 +12,7 @@ public class LibrarianEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long libId;
 	private String name;
+	private String emailAddress;
 	
 	public Long getLibId() {
 		return libId;
@@ -24,6 +25,12 @@ public class LibrarianEntity {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 	
 	

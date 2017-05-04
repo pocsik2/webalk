@@ -8,7 +8,7 @@ public interface UserService {
 	Iterable<UserEntity> listAllUser();
 	void newUser(UserEntity newUser);
 	void deleteUser(long id);
-	void updateUser(long id, UserEntity newUser);
+	void updateUser(long id, UserEntity updateUser);
 	UserEntity getOne(long id);
 	List<UserEntity>findByLastName(String lastName);
 	List<UserEntity>getUserOrderByFirstName();
