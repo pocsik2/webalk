@@ -16,9 +16,10 @@ public class BookEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long bookId;
+	private Long bookId;
 	private String name;
 	private String writer;
+	private String genres;
 	
 	@Column(length=10000)
 	@Lob
@@ -29,7 +30,7 @@ public class BookEntity {
 		return bookId;
 	}
 
-	public void setBookId(long bookId) {
+	public void setBookId(Long bookId) {
 		this.bookId = bookId;
 	}
 
@@ -55,6 +56,14 @@ public class BookEntity {
 
 	public void setBorrowDate(Date borrowDate) {
 		this.borrowDate = borrowDate;
+	}
+
+	public String getGenres() {
+		return genres;
+	}
+
+	public void setGenres(String genres) {
+		this.genres = genres;
 	}
 	
 
