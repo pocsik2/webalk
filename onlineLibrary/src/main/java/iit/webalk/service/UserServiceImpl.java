@@ -65,4 +65,14 @@ public class UserServiceImpl implements UserService{
 		return userDao.getUserFirstNameLikeYou();
 	}
 
+	@Override
+	public boolean checkForUsernameAndEmail(String userName,String emailAddress){
+		boolean alreadyExist = false;
+		for(UserEntity e : userRepository.findAll()) {
+			if(e.getUserName() == userName || e.getEmailAddress() == emailAddress) {
+				alreadyExist = true;
+			}
+		}
+		return alreadyExist;
+	}
 }

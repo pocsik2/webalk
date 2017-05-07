@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import iit.webalk.entity.BorrowerEntity;
+import iit.webalk.exception.AdminUserNotAllowed;
 import iit.webalk.service.BorrowerService;
 
 @RestController
@@ -30,6 +31,9 @@ public class BorrowerController {
 	
 	@PostMapping(path = "", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public void create(@RequestBody BorrowerEntity newBorrower){
+		if(newBorrower.getFirstName().toUpperCase().equals("ADMIN")){
+			throw new AdminUserNotAllowed();
+		}
 		borrowerService.newBorrower(newBorrower);
 	}
 

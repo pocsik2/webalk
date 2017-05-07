@@ -13,6 +13,6 @@ public interface UserService {
 	List<UserEntity>findByLastName(String lastName);
 	List<UserEntity>getUserOrderByFirstName();
 	List<UserEntity>getUserFirstNameLikeYou();
-	
+	boolean checkForUsernameAndEmail(String userName,String emailAddress);
 
 }

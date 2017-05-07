@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import iit.webalk.dao.UserDao;
 import iit.webalk.entity.UserEntity;
 import iit.webalk.exception.AdminUserNotAllowed;
+import iit.webalk.exception.UsernameOrEmailAdressAlreadyExistException;
 import iit.webalk.service.UserService;
 
 @RestController
@@ -46,6 +47,9 @@ public class UserController {
 	void createNew(@RequestBody UserEntity newUser) {
 		if (newUser.getFirstName().toUpperCase().equals("ADMIN")){
 			throw new AdminUserNotAllowed();
+		}
+		if (userService.checkForUsernameAndEmail(newUser.getUserName(), newUser.getEmailAddress())){
+			throw new UsernameOrEmailAdressAlreadyExistException();
 		}
 		userService.newUser(newUser);
 	}
