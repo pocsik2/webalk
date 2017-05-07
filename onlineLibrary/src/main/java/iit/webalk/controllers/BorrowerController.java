@@ -8,28 +8,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import iit.webalk.entity.BookEntity;
-import iit.webalk.service.BookService;
+import iit.webalk.entity.BorrowerEntity;
+import iit.webalk.service.BorrowerService;
 
 @RestController
-@RequestMapping("/books")
-public class BookController {
-
-	private BookService bookService;
+@RequestMapping("/borrower")
+public class BorrowerController {
+	
+	private BorrowerService borrowerService;
 
 	@Autowired
-	public BookController(BookService bookService) {
+	public BorrowerController(BorrowerService borrowerService) {
 		super();
-		this.bookService = bookService;
+		this.borrowerService = borrowerService;
 	}
 	
 	@GetMapping(path = "", produces=MediaType.APPLICATION_JSON_VALUE)
-	public Iterable<BookEntity> list(){
-		return bookService.listAllBook();
+	public Iterable<BorrowerEntity> list(){
+		return borrowerService.listAllBorrower();
 	}
 	
 	@PostMapping(path = "", consumes=MediaType.APPLICATION_JSON_VALUE)
-	public void create(@RequestBody BookEntity newBook){
-		bookService.newBook(newBook);
+	public void create(@RequestBody BorrowerEntity newBorrower){
+		borrowerService.newBorrower(newBorrower);
 	}
+
 }
